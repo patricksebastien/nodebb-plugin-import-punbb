@@ -1,36 +1,24 @@
-nodebb-plugin-import-punbb
+nodebb-plugin-import-punbb2
 ==========================
 
-*SEE this link for a step-by-step export:*
-http://www.workinprogress.ca/punbb-to-nodebb/
-
+inpired from http://www.workinprogress.ca/punbb-to-nodebb and forked from https://github.com/patricksebastien/nodebb-plugin-import-punbb to be compatible with [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import)
 
 --------------------------
-a PUNBB forum exporter to import-ready files.
+a PUNBB forum exporter
 
 based on [nodebb-plugin-import-ubb](https://github.com/akhoury/nodebb-plugin-import-ubb)
-into this plugin to work along with [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import).
 
 ### What is this?
 
-It's __just__ an exporter of [PUNBB](http://punbb.informer.com/), into files that [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import) can understand
-and import to NodeBB's database. So, it's not really a conventional nodebb-plugin, and you have to run it from the command line.
+It's __just__ an exporter of [PUNBB](http://punbb.informer.com/), which provides an API [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import) can understand
+
 
 ### Why is it even a NodeBB plugin?
 
 it doesn't really need to be, nor that you can use it within NodeBB it self, but, having this as a plugin have few benefits:
 * a nodebb- namespace, since you can't really use it for anything else
-* it can easily `require` NodeBB useful tools, currently, it uses its [util.js](https://github.com/designcreateplay/NodeBB/blob/master/public/src/utils.js) for example.
-* potentially, in the future, this plugin, __nodebb-plugin-import-punbb__ can interact with [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import) for a better UX
-
-### Usage
-
-```
-cd NodeBB
-npm install nodebb-plugin-import-punbb
-cd node_modules/nodebb-plugin-import-punbb/bin
-node export.js --storage="$HOME/Desktop/storage" --config="../export.config.json" --log="debug,info,warn" --flush
-```
+* it can easily `require` NodeBB useful tools
+* 
 
 ### What does it export?
 read carefully:
@@ -69,33 +57,8 @@ read carefully:
     * `_content` YES (HTML - read the [Markdown Note](#markdown-note) below)
     * `_timestamp` YES
 
-### I exported, now what?
-
-now use this [nodebb-plugin-import](https://github.com/akhoury/nodebb-plugin-import) to import your files into NodeBB's database
-
 ### Versions tested on:
   - PUNBB > 1.3.2
-
-### You configs are required
-
-But you can override the log, storageDir and clearStorage ones with flags when using [bin/export.js](bin/export.js)
-```
-{
-	"log": "debug",
-	"storageDir": "../storage",
-
-	"clearStorage": false,
-
-	"db": {
-		"host": "localhost",
-		"user": "punbb_user",
-		"password": "password",
-		"database": "punbb_test"
-	},
-	"tablePrefix": "punbb_"
-
-}
-```
 
 ### Markdown note
 
